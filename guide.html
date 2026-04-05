@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BossForge — Гайд з рекрутингу</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#0a0a0a', surface: '#111111', 'surface-2': '#1a1a1a',
+                        border: '#2a2a2a', gold: '#c8a97e', 'gold-light': '#d4ba94',
+                        'text-main': '#e8e8e8', 'text-dim': '#888888', green: '#4a9e6d',
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { background: #0a0a0a; color: #e8e8e8; }
+        .copy-btn:active { transform: scale(0.95); }
+        .tab-active { border-color: #c8a97e; color: #c8a97e; }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+<div class="max-w-3xl mx-auto px-5 py-10">
+    <div class="flex items-center justify-between mb-10">
+        <h1 class="text-2xl font-bold">BossForge — Гайд</h1>
+        <span class="text-text-dim text-sm">Тільки для внутрішнього використання</span>
+    </div>
+
+    <!-- Лендинг URL -->
+    <div class="bg-surface rounded-xl p-5 border border-gold/30 mb-10">
+        <p class="text-gold text-sm font-semibold mb-2">ТВОЯ ГОЛОВНА ПОСИЛАННЯ</p>
+        <div class="flex items-center gap-3">
+            <code class="bg-surface-2 px-4 py-2 rounded-lg text-sm flex-1 select-all">https://thebisone.github.io/bossforge-landing/</code>
+            <button onclick="navigator.clipboard.writeText('https://thebisone.github.io/bossforge-landing/')" class="copy-btn bg-gold text-bg px-4 py-2 rounded-lg text-sm font-bold">Копіювати</button>
+        </div>
+        <p class="text-text-dim text-xs mt-2">Використовуй цю ссылку скрізь: DM, Instagram bio, TikTok bio, Telegram</p>
+    </div>
+
+    <!-- TABS -->
+    <div class="flex gap-1 border-b border-border mb-8 overflow-x-auto">
+        <button onclick="switchTab('plan')" class="tab-btn px-4 py-3 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap tab-active" data-tab="plan">План дій</button>
+        <button onclick="switchTab('dm')" class="tab-btn px-4 py-3 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap text-text-dim" data-tab="dm">DM шаблони</button>
+        <button onclick="switchTab('tg')" class="tab-btn px-4 py-3 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap text-text-dim" data-tab="tg">Telegram пости</button>
+        <button onclick="switchTab('ads')" class="tab-btn px-4 py-3 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap text-text-dim" data-tab="ads">Meta Ads</button>
+        <button onclick="switchTab('content')" class="tab-btn px-4 py-3 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap text-text-dim" data-tab="content">Контент-план</button>
+    </div>
+
+    <!-- ==================== ПЛАН ==================== -->
+    <div id="tab-plan" class="tab-panel active">
+        <h2 class="text-xl font-bold mb-6">Покроковий план (4 тижні)</h2>
+
+        <div class="space-y-4">
+            <div class="bg-surface rounded-xl p-5 border border-border">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="bg-gold/10 text-gold font-bold px-3 py-1 rounded-lg text-sm">Тиждень 1</span>
+                    <span class="text-text-dim text-sm">Підготовка</span>
+                </div>
+                <ul class="space-y-2 text-text-dim text-sm">
+                    <li class="flex gap-2"><span>☐</span> Поставити ссылку на лендинг в Instagram bio</li>
+                    <li class="flex gap-2"><span>☐</span> Поставити ссылку в TikTok bio</li>
+                    <li class="flex gap-2"><span>☐</span> Створити 5-7 постів для Instagram (див. «Контент-план»)</li>
+                    <li class="flex gap-2"><span>☐</span> Створити Stories Highlights: «Кейси», «Як це працює», «Відгуки»</li>
+                    <li class="flex gap-2"><span>☐</span> Прогрівати акаунт: лайки, коментарі, підписки на цільову аудиторію</li>
+                </ul>
+            </div>
+
+            <div class="bg-surface rounded-xl p-5 border border-border">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="bg-gold/10 text-gold font-bold px-3 py-1 rounded-lg text-sm">Тиждень 2</span>
+                    <span class="text-text-dim text-sm">Контент + перші DM</span>
+                </div>
+                <ul class="space-y-2 text-text-dim text-sm">
+                    <li class="flex gap-2"><span>☐</span> Додати ще 5-7 постів (всього 10-15)</li>
+                    <li class="flex gap-2"><span>☐</span> Запустити Follower Campaign ($20-30) — див. «Meta Ads»</li>
+                    <li class="flex gap-2"><span>☐</span> Почати DM аутрич: 10-15 повідомлень/день (прогрітий акаунт)</li>
+                    <li class="flex gap-2"><span>☐</span> Постити в 5-10 Telegram груп (див. «Telegram пости»)</li>
+                </ul>
+            </div>
+
+            <div class="bg-surface rounded-xl p-5 border border-border">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="bg-gold/10 text-gold font-bold px-3 py-1 rounded-lg text-sm">Тиждень 3-4</span>
+                    <span class="text-text-dim text-sm">Масштабування</span>
+                </div>
+                <ul class="space-y-2 text-text-dim text-sm">
+                    <li class="flex gap-2"><span>☐</span> Збільшити DM до 20-30/день</li>
+                    <li class="flex gap-2"><span>☐</span> Запустити рекламну кампанію на рекрутинг ($30-50) — див. «Meta Ads»</li>
+                    <li class="flex gap-2"><span>☐</span> Продовжувати Telegram постинг (ротація шаблонів)</li>
+                    <li class="flex gap-2"><span>☐</span> Follow-up тих, хто не відповів (День 3 і День 7)</li>
+                    <li class="flex gap-2"><span>☐</span> Аналізувати: скільки DM → скільки відповідей → скільки перейшло</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-surface-2 border border-gold/20 rounded-xl p-5 mt-6">
+            <p class="text-gold font-semibold text-sm mb-2">Щоденний ритм:</p>
+            <p class="text-text-dim text-sm">15 хв — лайки/коментарі (прогрів) → 30 хв — DM аутрич → 15 хв — відповіді на повідомлення → 1 пост або Story</p>
+        </div>
+    </div>
+
+    <!-- ==================== DM ШАБЛОНИ ==================== -->
+    <div id="tab-dm" class="tab-panel">
+        <h2 class="text-xl font-bold mb-2">DM шаблони для Instagram</h2>
+        <p class="text-text-dim text-sm mb-6">Кожне повідомлення має бути унікальним — персоналізуй під дівчину. НЕ копіпасти дослівно.</p>
+
+        <!-- Скрипт A -->
+        <div class="bg-surface rounded-xl p-5 border border-border mb-4">
+            <h3 class="font-bold text-gold mb-3">Скрипт А — Для моделей з провокативним контентом</h3>
+
+            <p class="text-text-dim text-xs mb-2 uppercase tracking-wide">Повідомлення 1 (після 2 днів прогріву):</p>
+            <div class="bg-surface-2 rounded-lg p-4 mb-4 text-sm leading-relaxed relative">
+                <button onclick="copyBlock(this)" class="copy-btn absolute top-2 right-2 bg-gold/20 text-gold px-2 py-1 rounded text-xs">Копія</button>
+                Привіт [Ім'я] 👋<br>
+                Побачила твій профіль — дуже класний контент!<br>
+                Ми продакшн-команда, працюємо з дівчатами на контент-платформах.<br>
+                Допомагаємо з просуванням, стратегією і заробітком.<br>
+                Якщо цікаво — можу розповісти деталі? 😊
+            </div>
+
+            <p class="text-text-dim text-xs mb-2 uppercase tracking-wide">Повідомлення 2 (якщо відповіла):</p>
+            <div class="bg-surface-2 rounded-lg p-4 mb-4 text-sm leading-relaxed relative">
+                <button onclick="copyBlock(this)" class="copy-btn absolute top-2 right-2 bg-gold/20 text-gold px-2 py-1 rounded text-xs">Копія</button>
+                Дякую за відповідь! Коротко:<br><br>
+                Ми беремо на себе:<br>
+                • просування та маркетинг<br>
+                • чат з фанатами<br>
+                • стратегію контенту<br><br>
+                Дівчата виходять на $1,000-3,000/міс за 2-3 місяці.<br>
+                Повна анонімність — геоблок, псевдонім.<br><br>
+                Ось тут все розписано з кейсами:<br>
+                https://thebisone.github.io/bossforge-landing/
+            </div>
+
+            <p class="text-text-dim text-xs mb-2 uppercase tracking-wide">Повідомлення 3 (після переходу на сайт):</p>
+            <div class="bg-surface-2 rounded-lg p-4 text-sm leading-relaxed relative">
+                <button onclick="copyBlock(this)" class="copy-btn absolute top-2 right-2 bg-gold/20 text-gold px-2 py-1 rounded text-xs">Копія</button>
+                Подивилась? 😊<br>
+                Якщо є питання — можу з'єднати з продюсером напряму.<br>
+                Або натисни кнопку на сайті — там одразу чат.
+            </div>
+        </div>
+
+        <!-- Скрипт B -->
+        <div class="bg-surface rounded-xl p-5 border border-border mb-4">
+            <h3 class="font-bold text-gold mb-3">Скрипт Б — М'який (фітнес/лайфстайл)</h3>
+
+            <p class="text-text-dim text-xs mb-2 uppercase tracking-wide">Повідомлення 1:</p>
+            <div class="bg-surface-2 rounded-lg p-4 mb-4 text-sm leading-relaxed relative">
+                <button onclick="copyBlock(this)" class="copy-btn absolute top-2 right-2 bg-gold/20 text-gold px-2 py-1 rounded text-xs">Копія</button>
+                Привіт! 👋<br>
+                Залипла на твоїй стрічці — дуже крутий контент!<br>
+                Ти колись думала монетизувати свою аудиторію через підписки?<br>
+                Просто цікаво, бо ми якраз допомагаємо з цим дівчатам 😊
+            </div>
+
+            <p class="text-text-dim text-xs mb-2 uppercase tracking-wide">Повідомлення 2:</p>
+            <div class="bg-surface-2 rounded-lg p-4 text-sm leading-relaxed relative">
+                <button onclick="copyBlock(this)" class="copy-btn absolute top-2 right-2 bg-gold/20 text-gold px-2 py-1 rounded text-xs">Копія</button>
+                Ми продакшн-команда — робимо все від просування до роботи з фанатами.<br>
+                Тобі залишається тільки контент.<br><br>
+                Це повністю анонімно і можна починати навіть без досвіду.<br><br>
+                Ось тут все з деталями і кейсами:<br>
+                https://thebisone.github.io/bossforge-landing/
+            </div>
+        </div>
+
+        <!-- Скрипт C -->
+        <div class="bg-surface rounded-xl p-5 border border-border mb-4">
+            <h3 class="font-bold text-gold mb-3">Скрипт В — Прямий (вже на OF/Fansly)</h3>
+
+            <p class="text-text-dim text-xs mb-2 uppercase tracking-wide">Повідомлення 1:</p>
+            <div class="bg-surface-2 rounded-lg p-4 mb-4 text-sm leading-relaxed relative">
+                <button onclick="copyBlock(this)" class="copy-btn absolute top-2 right-2 bg-gold/20 text-gold px-2 py-1 rounded text-xs">Копія</button>
+                Привіт [Ім'я]! 👋<br>
+                Бачу, ти вже на платформі — респект 💪<br>
+                Як результати?<br><br>
+                Питаю, бо ми продакшн-команда і допомагаємо креаторам масштабуватися.<br>
+                Якщо цікаво почути що ми робимо — напиши 😊
+            </div>
+
+            <p class="text-text-dim text-xs mb-2 uppercase tracking-wide">Повідомлення 2:</p>
+            <div class="bg-surface-2 rounded-lg p-4 text-sm leading-relaxed relative">
+                <button onclick="copyBlock(this)" class="copy-btn absolute top-2 right-2 bg-gold/20 text-gold px-2 py-1 rounded text-xs">Копія</button>
+                У нас команда: маркетолог, чаттери, контент-менеджер.<br>
+                Дівчата з нами ростуть в 3-5 разів за перші місяці.<br><br>
+                Ось кейси і деталі:<br>
+                https://thebisone.github.io/bossforge-landing/<br><br>
+                Хочеш обговорити?
+            </div>
+        </div>
+
+        <!-- Follow-up -->
+        <div class="bg-surface rounded-xl p-5 border border-border">
+            <h3 class="font-bold mb-3">Follow-up система</h3>
+            <div class="space-y-3 text-sm">
+                <div class="flex gap-3 items-start">
+                    <span class="bg-gold/10 text-gold font-bold px-2 py-0.5 rounded text-xs mt-0.5 whitespace-nowrap">День 1</span>
+                    <span class="text-text-dim">Перше повідомлення (після 2 днів прогріву)</span>
+                </div>
+                <div class="flex gap-3 items-start">
+                    <span class="bg-gold/10 text-gold font-bold px-2 py-0.5 rounded text-xs mt-0.5 whitespace-nowrap">День 3</span>
+                    <span class="text-text-dim">«Хей! Забула скинути — ось наш сайт з кейсами: [ссылка]. Якщо цікаво — питай 😊»</span>
+                </div>
+                <div class="flex gap-3 items-start">
+                    <span class="bg-gold/10 text-gold font-bold px-2 py-0.5 rounded text-xs mt-0.5 whitespace-nowrap">День 7</span>
+                    <span class="text-text-dim">«Все, більше не спамлю 😄 Якщо колись буде актуально — я тут»</span>
+                </div>
+                <div class="flex gap-3 items-start">
+                    <span class="bg-surface-2 text-text-dim font-bold px-2 py-0.5 rounded text-xs mt-0.5 whitespace-nowrap">Після</span>
+                    <span class="text-text-dim">Більше не пишемо. Лайкаємо Stories раз на тиждень.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Безпека -->
+        <div class="bg-red-500/5 border border-red-500/20 rounded-xl p-5 mt-4">
+            <h3 class="font-bold text-red-400 mb-3 text-sm">Правила безпеки</h3>
+            <ul class="space-y-1 text-sm text-text-dim">
+                <li>❌ НЕ копіпасти однакові повідомлення — Instagram банить</li>
+                <li>❌ НЕ пиши «OnlyFans» — каже «контент-платформа» або «підписки»</li>
+                <li>❌ НЕ надсилай ссылку в першому повідомленні</li>
+                <li>❌ НЕ пиши більше 3 разів без відповіді</li>
+                <li>✅ Кожне повідомлення — персоналізоване</li>
+                <li>✅ Паузи між DM: мінімум 2-5 хвилин</li>
+                <li>✅ Міксуй DM з лайками і коментарями</li>
+            </ul>
+        </div>
+
+        <!-- Ліміти -->
+        <div class="bg-surface rounded-xl p-5 border border-border mt-4">
+            <h3 class="font-bold mb-3 text-sm">Ліміти DM на день</h3>
+            <div class="grid grid-cols-3 gap-3 text-center text-sm">
+                <div class="bg-surface-2 rounded-lg p-3">
+                    <div class="text-text-dim text-xs mb-1">Новий акаунт</div>
+                    <div class="text-gold font-bold">5-10/день</div>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-3">
+                    <div class="text-text-dim text-xs mb-1">2-4 тижні</div>
+                    <div class="text-gold font-bold">15-20/день</div>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-3">
+                    <div class="text-text-dim text-xs mb-1">1+ місяць</div>
+                    <div class="text-gold font-bold">20-30/день</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== TELEGRAM ПОСТИ ==================== -->
+    <div id="tab-tg" class="tab-panel">
+        <h2 class="text-xl font-bold mb-2">Telegram — Пости для груп</h2>
+        <p class="text-text-dim text-sm mb-6">Шукай групи: «робота для дівчат», «робота онлайн Україна», «заробіток онлайн», «віддалена робота»</p>
+
+        <div class="space-y-4">
+            <div class="bg-surface rounded-xl p-5 border border-border">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-bold text-gold">Пост 1 — Стандартний</h3>
+                    <button onclick="copyBlock(this)" class="copy-btn bg-gold/20 text-gold px-2 py-1 rounded text-xs">Копія</button>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-4 text-sm leading-relaxed whitespace-pre-line">🎬 Шукаємо дівчат для роботи з контентом
+
+Продакшн-команда BossForge набирає нових учасниць.
+
+Що пропонуємо:
+• Дохід від $1,000/міс (реальні кейси)
+• Повна анонімність + команда підтримки
+• Гнучкий графік, робота з дому
+• Навчання з нуля
+
+Вимоги:
+• 18+ років
+• Готовність створювати контент
+• Відповідальність
+
+Деталі та кейси 👇
+https://thebisone.github.io/bossforge-landing/</div>
+            </div>
+
+            <div class="bg-surface rounded-xl p-5 border border-border">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-bold text-gold">Пост 2 — З кейсом</h3>
+                    <button onclick="copyBlock(this)" class="copy-btn bg-gold/20 text-gold px-2 py-1 rounded text-xs">Копія</button>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-4 text-sm leading-relaxed whitespace-pre-line">💰 Шукаємо дівчат для роботи на контент-платформі
+
+Наша команда допомагає креаторам заробляти від $1,000 до $10,000/міс.
+
+Реальний кейс: дівчина з нуля вийшла на $10,400/міс за 6 місяців.
+
+Що робимо ми:
+✅ Просування та маркетинг
+✅ Чат з фанатами
+✅ Стратегія контенту
+✅ Повна анонімність
+
+Тобі — тільки знімати контент.
+
+Кейси і деталі 👇
+https://thebisone.github.io/bossforge-landing/</div>
+            </div>
+
+            <div class="bg-surface rounded-xl p-5 border border-border">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-bold text-gold">Пост 3 — Короткий</h3>
+                    <button onclick="copyBlock(this)" class="copy-btn bg-gold/20 text-gold px-2 py-1 rounded text-xs">Копія</button>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-4 text-sm leading-relaxed whitespace-pre-line">📸 Робота для дівчат | Онлайн | Від $1,000/міс
+
+Продакшн-команда шукає контент-креаторів.
+Анонімно. Без досвіду. Команда все робить за тебе.
+
+Деталі: https://thebisone.github.io/bossforge-landing/</div>
+            </div>
+
+            <div class="bg-surface rounded-xl p-5 border border-border">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-bold text-gold">Пост 4 — Вакансія</h3>
+                    <button onclick="copyBlock(this)" class="copy-btn bg-gold/20 text-gold px-2 py-1 rounded text-xs">Копія</button>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-4 text-sm leading-relaxed whitespace-pre-line">🔥 Вакансія: Контент-креатор (віддалено)
+
+Компанія: BossForge (продакшн-команда)
+Формат: Повністю віддалено
+Дохід: Від $1,000/міс
+
+Обов'язки:
+— Створення фото/відео контенту (за нашими гайдами)
+
+Ми робимо:
+— Просування, маркетинг, робота з аудиторією
+— Повна анонімність та захист
+
+Без досвіду — навчимо.
+Деталі: https://thebisone.github.io/bossforge-landing/</div>
+            </div>
+        </div>
+
+        <div class="bg-red-500/5 border border-red-500/20 rounded-xl p-5 mt-4">
+            <h3 class="font-bold text-red-400 mb-2 text-sm">Правила постингу</h3>
+            <ul class="space-y-1 text-sm text-text-dim">
+                <li>✅ Не частіше 1 разу на 2-3 дні в одній групі</li>
+                <li>✅ Міняй текст між постами (ротуй 4 шаблони)</li>
+                <li>✅ Відповідай на питання в коментарях</li>
+                <li>❌ НЕ писати «OnlyFans» (забанять)</li>
+                <li>❌ НЕ спамити одне і те ж в 20 груп за день</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ==================== META ADS ==================== -->
+    <div id="tab-ads" class="tab-panel">
+        <h2 class="text-xl font-bold mb-2">Meta Ads — Покрокова настройка</h2>
+        <p class="text-text-dim text-sm mb-6">Бюджет: $20-30 на фоловерів + $30-50 на рекрутинг</p>
+
+        <!-- Крок 1: Follower Campaign -->
+        <div class="bg-surface rounded-xl p-5 border border-border mb-4">
+            <h3 class="font-bold text-gold mb-4">Крок 1: Follower Campaign ($20-30)</h3>
+            <p class="text-text-dim text-sm mb-4">Мета: отримати 200-500 реальних підписників на Instagram — щоб акаунт виглядав живим.</p>
+
+            <div class="space-y-3 text-sm">
+                <div class="bg-surface-2 rounded-lg p-4">
+                    <p class="font-semibold mb-2">1. Зайди в Meta Ads Manager</p>
+                    <p class="text-text-dim">business.facebook.com/adsmanager → Створити кампанію</p>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-4">
+                    <p class="font-semibold mb-2">2. Мета кампанії: «Впізнаваність» (Awareness)</p>
+                    <p class="text-text-dim">Або «Залученість» (Engagement) → «Відвідування профілю Instagram»</p>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-4">
+                    <p class="font-semibold mb-2">3. Аудиторія</p>
+                    <ul class="text-text-dim space-y-1">
+                        <li>• Країна: Україна</li>
+                        <li>• Вік: 18-30</li>
+                        <li>• Стать: Жінки</li>
+                        <li>• Інтереси: Фітнес, Модельний бізнес, Фотографія, Краса, Fashion</li>
+                    </ul>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-4">
+                    <p class="font-semibold mb-2">4. Бюджет та графік</p>
+                    <ul class="text-text-dim space-y-1">
+                        <li>• Денний бюджет: $3-5/день</li>
+                        <li>• Тривалість: 5-7 днів</li>
+                        <li>• Загалом: $20-30</li>
+                    </ul>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-4">
+                    <p class="font-semibold mb-2">5. Креатив</p>
+                    <ul class="text-text-dim space-y-1">
+                        <li>• Використай один з кращих постів з Instagram</li>
+                        <li>• Або зроби Reel 15 сек: цифри + lifestyle</li>
+                        <li>• НЕ згадуй OnlyFans в рекламі</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Крок 2: Recruitment Campaign -->
+        <div class="bg-surface rounded-xl p-5 border border-border mb-4">
+            <h3 class="font-bold text-gold mb-4">Крок 2: Рекрутинг Campaign ($30-50)</h3>
+            <p class="text-text-dim text-sm mb-4">Мета: трафік на лендинг → переходи в Telegram бот. Запускати ПІСЛЯ follower campaign.</p>
+
+            <div class="space-y-3 text-sm">
+                <div class="bg-surface-2 rounded-lg p-4">
+                    <p class="font-semibold mb-2">1. Мета кампанії: «Трафік» (Traffic)</p>
+                    <p class="text-text-dim">Оптимізація: кліки на посилання</p>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-4">
+                    <p class="font-semibold mb-2">2. Посилання</p>
+                    <p class="text-text-dim">https://thebisone.github.io/bossforge-landing/<br>
+                    НЕ пряме посилання на Telegram — Meta може заблокувати</p>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-4">
+                    <p class="font-semibold mb-2">3. Аудиторія</p>
+                    <ul class="text-text-dim space-y-1">
+                        <li>• Країна: Україна</li>
+                        <li>• Вік: 18-28</li>
+                        <li>• Стать: Жінки</li>
+                        <li>• Інтереси: Модельний бізнес, Онлайн заробіток, Фріланс, Контент-креатор</li>
+                    </ul>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-4">
+                    <p class="font-semibold mb-2">4. Текст реклами (приклади)</p>
+                    <div class="bg-bg rounded p-3 text-text-dim mt-2">
+                        «Шукаєш додатковий дохід онлайн? 💰<br>
+                        Продакшн-команда допоможе заробляти на контент-платформі.<br>
+                        Анонімно. Без досвіду. З командою.<br>
+                        Дізнайся більше 👇»
+                    </div>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-4">
+                    <p class="font-semibold mb-2">5. Бюджет</p>
+                    <ul class="text-text-dim space-y-1">
+                        <li>• Денний бюджет: $5-7/день</li>
+                        <li>• Тривалість: 5-7 днів</li>
+                        <li>• Загалом: $30-50</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-surface-2 border border-gold/20 rounded-xl p-5">
+            <p class="text-gold font-semibold text-sm mb-2">Важливо про модерацію Meta:</p>
+            <ul class="text-text-dim text-sm space-y-1">
+                <li>• НЕ пиши OnlyFans, OF, adult, explicit — заблокують</li>
+                <li>• Використовуй: «контент-платформа», «платформа підписок», «онлайн заробіток»</li>
+                <li>• Посилання на лендинг (не на Telegram напряму)</li>
+                <li>• Фото в рекламі: lifestyle, не провокативне</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ==================== КОНТЕНТ-ПЛАН ==================== -->
+    <div id="tab-content" class="tab-panel">
+        <h2 class="text-xl font-bold mb-2">Контент-план для Instagram</h2>
+        <p class="text-text-dim text-sm mb-6">Потрібно 10-15 постів перед початком аутрічу. Ось ідеї:</p>
+
+        <div class="space-y-3">
+            <div class="bg-surface rounded-xl p-5 border border-border">
+                <h3 class="font-bold mb-3">Тип 1: Кейси та цифри (3-4 пости)</h3>
+                <div class="space-y-2 text-sm text-text-dim">
+                    <div class="bg-surface-2 rounded-lg p-3">📊 Скрін заробітку (обрізаний, без імен) + текст «Результат нашої моделі за 6 місяців: $1K → $10K/міс»</div>
+                    <div class="bg-surface-2 rounded-lg p-3">📈 Графік росту + текст «Чому з командою заробляють більше? Розкладаємо...»</div>
+                    <div class="bg-surface-2 rounded-lg p-3">💬 Скрін-відгук моделі (анонімний) + текст «Що кажуть наші дівчата»</div>
+                </div>
+            </div>
+
+            <div class="bg-surface rounded-xl p-5 border border-border">
+                <h3 class="font-bold mb-3">Тип 2: Як це працює (3-4 пости)</h3>
+                <div class="space-y-2 text-sm text-text-dim">
+                    <div class="bg-surface-2 rounded-lg p-3">🎬 «3 кроки: Знімаєш → Ми просуваємо → Ти заробляєш» (карусель)</div>
+                    <div class="bg-surface-2 rounded-lg p-3">🔒 «4 рівні захисту: геоблок, псевдонім, DMCA, адвокат» (карусель)</div>
+                    <div class="bg-surface-2 rounded-lg p-3">❓ «FAQ: найчастіші питання від дівчат» (карусель)</div>
+                    <div class="bg-surface-2 rounded-lg p-3">⚖️ «Сама vs з командою — порівняння» (карусель/інфографіка)</div>
+                </div>
+            </div>
+
+            <div class="bg-surface rounded-xl p-5 border border-border">
+                <h3 class="font-bold mb-3">Тип 3: Lifestyle та довіра (3-4 пости)</h3>
+                <div class="space-y-2 text-sm text-text-dim">
+                    <div class="bg-surface-2 rounded-lg p-3">💻 Робоче місце: ноутбук, кава, «Типовий день команди BossForge»</div>
+                    <div class="bg-surface-2 rounded-lg p-3">🌍 «Чому ми обрали допомагати українським дівчатам»</div>
+                    <div class="bg-surface-2 rounded-lg p-3">👥 «Познайомся з нашою командою» (без облич — ролі та функції)</div>
+                </div>
+            </div>
+
+            <div class="bg-surface rounded-xl p-5 border border-border">
+                <h3 class="font-bold mb-3">Тип 4: Reels (2-3 відео)</h3>
+                <div class="space-y-2 text-sm text-text-dim">
+                    <div class="bg-surface-2 rounded-lg p-3">🎥 15 сек: цифри летять на екрані + «Заробляй від $1K/міс з командою»</div>
+                    <div class="bg-surface-2 rounded-lg p-3">🎥 30 сек: «Сама заробляю $200. З командою — $3000. В чому різниця?»</div>
+                    <div class="bg-surface-2 rounded-lg p-3">🎥 Використай ver2_3/ver2_4 відео як основу для Reels</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-surface-2 border border-gold/20 rounded-xl p-5 mt-4">
+            <p class="text-gold font-semibold text-sm mb-2">Stories Highlights (створи 3 папки):</p>
+            <ul class="text-text-dim text-sm space-y-1">
+                <li>📊 <strong>Кейси</strong> — скріни заробітків, графіки росту</li>
+                <li>❓ <strong>FAQ</strong> — відповіді на часті питання (1 Story = 1 питання)</li>
+                <li>👥 <strong>Команда</strong> — хто ми, що робимо, чому довіряти</li>
+            </ul>
+        </div>
+
+        <div class="bg-surface rounded-xl p-5 border border-border mt-4">
+            <h3 class="font-bold mb-3">Графік постингу</h3>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+                <div class="bg-surface-2 rounded-lg p-3 text-center">
+                    <div class="text-gold font-bold mb-1">Пости</div>
+                    <div class="text-text-dim">3-4 на тиждень</div>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-3 text-center">
+                    <div class="text-gold font-bold mb-1">Stories</div>
+                    <div class="text-text-dim">1-2 на день</div>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-3 text-center">
+                    <div class="text-gold font-bold mb-1">Reels</div>
+                    <div class="text-text-dim">1-2 на тиждень</div>
+                </div>
+                <div class="bg-surface-2 rounded-lg p-3 text-center">
+                    <div class="text-gold font-bold mb-1">Час</div>
+                    <div class="text-text-dim">18:00-21:00 UA</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function switchTab(name) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('tab-active');
+        b.classList.add('text-text-dim');
+    });
+    document.getElementById('tab-' + name).classList.add('active');
+    const btn = document.querySelector(`[data-tab="${name}"]`);
+    btn.classList.add('tab-active');
+    btn.classList.remove('text-text-dim');
+}
+
+function copyBlock(btn) {
+    const block = btn.closest('.bg-surface, .bg-surface-2')?.querySelector('.bg-surface-2, .whitespace-pre-line');
+    if (!block) return;
+    navigator.clipboard.writeText(block.innerText);
+    const orig = btn.textContent;
+    btn.textContent = '✓';
+    setTimeout(() => btn.textContent = orig, 1500);
+}
+</script>
+
+</body>
+</html>
