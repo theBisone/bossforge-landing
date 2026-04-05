@@ -194,6 +194,25 @@
             /* width set via inline style */
         }
 
+        /* Mobile sticky CTA */
+        .mobile-cta {
+            transform: translateY(100%);
+            animation: slideUp 0.5s ease forwards;
+            animation-delay: 2s;
+        }
+        @keyframes slideUp {
+            to { transform: translateY(0); }
+        }
+
+        /* Mobile touch feedback */
+        @media (max-width: 640px) {
+            .card-hover:active {
+                border-color: #9a7d5a;
+                box-shadow: 0 0 20px rgba(200,169,126,0.15);
+                transform: scale(0.98) !important;
+            }
+        }
+
         /* Floating badge */
         .float-badge {
             animation: floatBadge 3s ease-in-out infinite;
@@ -251,11 +270,11 @@
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center hero-fade hero-fade-5">
                 <a href="https://t.me/BossForge_bot?start=website"
-                   class="bg-gold text-bg font-bold px-10 py-4 rounded-xl text-lg hover:bg-gold-light transition-all pulse-gold">
+                   class="bg-gold text-bg font-bold px-10 py-4 rounded-xl text-lg hover:bg-gold-light transition-all pulse-gold w-full sm:w-auto text-center">
                     Почати співпрацю
                 </a>
                 <a href="#how"
-                   class="border border-border text-text-dim font-medium px-10 py-4 rounded-xl text-lg hover:border-gold hover:text-gold transition-all">
+                   class="border border-border text-text-dim font-medium px-10 py-4 rounded-xl text-lg hover:border-gold hover:text-gold transition-all w-full sm:w-auto text-center">
                     Дізнатися більше
                 </a>
             </div>
@@ -294,7 +313,7 @@
     </section>
 
     <!-- ==================== БЕЗПЕКА ==================== -->
-    <section id="safety" class="py-24 px-6">
+    <section id="safety" class="py-14 sm:py-24 px-5 sm:px-6">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <p class="text-gold font-semibold text-sm tracking-widest uppercase mb-3">Захист</p>
@@ -354,7 +373,7 @@
     <div class="gold-divider max-w-4xl mx-auto"></div>
 
     <!-- ==================== ЯК ЦЕ ПРАЦЮЄ ==================== -->
-    <section id="how" class="py-24 px-6">
+    <section id="how" class="py-14 sm:py-24 px-5 sm:px-6">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <p class="text-gold font-semibold text-sm tracking-widest uppercase mb-3">Процес</p>
@@ -415,7 +434,7 @@
     <div class="gold-divider max-w-4xl mx-auto"></div>
 
     <!-- ==================== ПОРІВНЯННЯ ==================== -->
-    <section class="py-24 px-6">
+    <section class="py-14 sm:py-24 px-5 sm:px-6">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <p class="text-gold font-semibold text-sm tracking-widest uppercase mb-3">Чому команда</p>
@@ -491,7 +510,7 @@
     <div class="gold-divider max-w-4xl mx-auto"></div>
 
     <!-- ==================== КЕЙСИ ==================== -->
-    <section class="py-24 px-6">
+    <section class="py-14 sm:py-24 px-5 sm:px-6">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <p class="text-gold font-semibold text-sm tracking-widest uppercase mb-3">Результати</p>
@@ -608,7 +627,7 @@
     <div class="gold-divider max-w-4xl mx-auto"></div>
 
     <!-- ==================== КОМАНДА ==================== -->
-    <section class="py-24 px-6">
+    <section class="py-14 sm:py-24 px-5 sm:px-6">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <p class="text-gold font-semibold text-sm tracking-widest uppercase mb-3">Команда</p>
@@ -682,7 +701,7 @@
     <div class="gold-divider max-w-4xl mx-auto"></div>
 
     <!-- ==================== FAQ ==================== -->
-    <section class="py-24 px-6">
+    <section class="py-14 sm:py-24 px-5 sm:px-6">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <p class="text-gold font-semibold text-sm tracking-widest uppercase mb-3">FAQ</p>
@@ -758,7 +777,7 @@
     <div class="gold-divider max-w-4xl mx-auto"></div>
 
     <!-- ==================== ОФФЕР ==================== -->
-    <section class="py-24 px-6">
+    <section class="py-14 sm:py-24 px-5 sm:px-6">
         <div class="max-w-3xl mx-auto text-center reveal">
             <div class="bg-surface rounded-3xl p-10 sm:p-16 border border-gold/20 glow-gold-strong relative overflow-hidden">
                 <!-- Background decoration -->
@@ -794,7 +813,7 @@
                     </div>
 
                     <a href="https://t.me/BossForge_bot?start=website"
-                       class="inline-block bg-gold text-bg font-bold px-12 py-5 rounded-xl text-xl hover:bg-gold-light transition-all pulse-gold">
+                       class="inline-block bg-gold text-bg font-bold px-12 py-5 rounded-xl text-xl hover:bg-gold-light transition-all pulse-gold w-full sm:w-auto text-center">
                         Написати нам
                     </a>
                     <p class="text-text-muted text-sm mt-4">
@@ -805,8 +824,18 @@
         </div>
     </section>
 
+    <!-- ==================== MOBILE STICKY CTA ==================== -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 sm:hidden mobile-cta" id="mobileCta">
+        <div class="bg-bg/90 backdrop-blur-lg border-t border-border px-4 py-3">
+            <a href="https://t.me/BossForge_bot?start=website"
+               class="block bg-gold text-bg font-bold py-3.5 rounded-xl text-center text-base">
+                Почати співпрацю
+            </a>
+        </div>
+    </div>
+
     <!-- ==================== FOOTER ==================== -->
-    <footer class="py-10 px-6 border-t border-border">
+    <footer class="py-10 pb-20 sm:pb-10 px-6 border-t border-border">
         <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-3">
                 <img src="assets/logo.png" alt="BossForge" class="w-24 opacity-60">
@@ -1010,6 +1039,25 @@
                 });
             }, { threshold: 0.5 });
             statsObserver.observe(statsSection);
+        }
+
+        // ===== 8. Mobile sticky CTA: show after hero, hide near footer =====
+        const mobileCta = document.getElementById('mobileCta');
+        if (mobileCta && window.innerWidth < 640) {
+            const hero = document.querySelector('section:first-of-type');
+            const footer = document.querySelector('footer');
+            let ctaVisible = false;
+
+            window.addEventListener('scroll', () => {
+                const pastHero = window.scrollY > (hero?.offsetHeight || 500) * 0.7;
+                const nearFooter = footer && (window.innerHeight + window.scrollY) > (document.body.offsetHeight - 200);
+
+                if (pastHero && !nearFooter) {
+                    if (!ctaVisible) { mobileCta.style.transform = 'translateY(0)'; ctaVisible = true; }
+                } else {
+                    if (ctaVisible) { mobileCta.style.transform = 'translateY(100%)'; ctaVisible = false; }
+                }
+            });
         }
     </script>
 
