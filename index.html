@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BossForge — продакшн-команда для контент-креаторів</title>
+    <meta name="description" content="Українська продакшн-команда. Допомагаємо дівчатам заробляти на платформі підписок — безпечно, анонімно, з підтримкою на кожному кроці.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="BossForge — продакшн-команда для контент-креаторів">
+    <meta property="og:description" content="Безпечно. Анонімно. З командою. Заробіток на платформі підписок.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:type" content="website">
+
+    <!-- Шрифти -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#0a0a0a',
+                        surface: '#111111',
+                        'surface-2': '#1a1a1a',
+                        'surface-3': '#222222',
+                        border: '#2a2a2a',
+                        'border-light': '#333333',
+                        gold: '#c8a97e',
+                        'gold-light': '#d4ba94',
+                        'gold-dim': '#9a7d5a',
+                        'gold-dark': '#7a6040',
+                        'text-main': '#e8e8e8',
+                        'text-dim': '#888888',
+                        'text-muted': '#555555',
+                        green: '#4a9e6d',
+                        'green-dim': '#2d6b45',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background: #0a0a0a; color: #e8e8e8; overflow-x: hidden; }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* Hero animations */
+        .hero-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .hero-fade-1 { animation-delay: 0.2s; }
+        .hero-fade-2 { animation-delay: 0.4s; }
+        .hero-fade-3 { animation-delay: 0.6s; }
+        .hero-fade-4 { animation-delay: 0.8s; }
+        .hero-fade-5 { animation-delay: 1.0s; }
+        @keyframes heroFade {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Gold glow effect */
+        .glow-gold {
+            box-shadow: 0 0 30px rgba(200, 169, 126, 0.15), 0 0 60px rgba(200, 169, 126, 0.05);
+        }
+        .glow-gold-strong {
+            box-shadow: 0 0 40px rgba(200, 169, 126, 0.25), 0 0 80px rgba(200, 169, 126, 0.1);
+        }
+
+        /* CTA pulse */
+        .pulse-gold {
+            animation: pulseGold 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulseGold {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(200, 169, 126, 0.5); }
+            50% { box-shadow: 0 0 0 16px rgba(200, 169, 126, 0); }
+        }
+
+        /* Card hover lift + 3D tilt */
+        .card-hover {
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+        .card-hover:hover {
+            border-color: #9a7d5a;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(200,169,126,0.08);
+        }
+
+        /* Cursor glow that follows mouse */
+        .cursor-glow {
+            pointer-events: none;
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200,169,126,0.06) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+            mix-blend-mode: screen;
+        }
+
+        /* Magnetic button effect */
+        .magnetic-btn {
+            transition: transform 0.2s ease;
+        }
+
+        /* Gradient text */
+        .text-gradient {
+            background: linear-gradient(135deg, #c8a97e, #d4ba94, #c8a97e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Hero background effects */
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200,169,126,0.08) 0%, transparent 70%);
+            filter: blur(60px);
+        }
+
+        /* Animated counter */
+        .counter { font-variant-numeric: tabular-nums; }
+
+        /* FAQ */
+        details summary { cursor: pointer; list-style: none; }
+        details summary::-webkit-details-marker { display: none; }
+        details summary .faq-icon {
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+        details[open] summary .faq-icon {
+            transform: rotate(45deg);
+        }
+        details .faq-body {
+            animation: faqOpen 0.3s ease;
+        }
+        @keyframes faqOpen {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Comparison table */
+        .comparison-you { background: linear-gradient(135deg, rgba(200,169,126,0.08) 0%, transparent 100%); }
+        .comparison-them { background: linear-gradient(135deg, rgba(100,100,100,0.08) 0%, transparent 100%); }
+
+        /* Stats counter animation */
+        .stat-number {
+            background: linear-gradient(180deg, #e8e8e8 0%, #c8a97e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Divider */
+        .gold-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c8a97e40, transparent);
+        }
+
+        /* Progress bar animation */
+        .progress-animate {
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .progress-animate.visible {
+            /* width set via inline style */
+        }
+
+        /* Floating badge */
+        .float-badge {
+            animation: floatBadge 3s ease-in-out infinite;
+        }
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <!-- Cursor glow -->
+    <div class="cursor-glow hidden sm:block" id="cursorGlow"></div>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="min-h-screen flex flex-col items-center justify-center px-6 text-center relative overflow-hidden">
+        <!-- Background videos (chained: 1 → 2 → loop) -->
+        <video id="heroVid1" autoplay muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-20 transition-opacity duration-1000" style="object-position: center 35%;">
+            <source src="assets/hero-bg-1.mp4" type="video/mp4">
+        </video>
+        <video id="heroVid2" muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" style="object-position: center 35%;">
+            <source src="assets/hero-bg-2.mp4" type="video/mp4">
+        </video>
+        <video id="heroVid3" muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+            <source src="assets/hero-bg-3.mp4" type="video/mp4">
+        </video>
+
+        <!-- Dark overlay over video -->
+        <div class="absolute inset-0 bg-gradient-to-b from-bg/60 via-bg/80 to-bg"></div>
+
+        <!-- Background effects -->
+        <div class="hero-glow" style="top: -200px; left: 50%; transform: translateX(-50%);"></div>
+
+        <!-- Grid pattern overlay -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#c8a97e 1px, transparent 1px), linear-gradient(90deg, #c8a97e 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+        <div class="relative z-10 max-w-3xl mx-auto">
+            <!-- Logo -->
+            <img src="assets/logo.png" alt="BossForge" class="w-44 sm:w-56 mx-auto mb-10 hero-fade hero-fade-1">
+
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 bg-surface-2 border border-border rounded-full px-4 py-2 mb-8 hero-fade hero-fade-2">
+                <span class="w-2 h-2 bg-green rounded-full animate-pulse"></span>
+                <span class="text-text-dim text-sm">Набираємо нових креаторів</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black mb-6 leading-tight hero-fade hero-fade-3">
+                Знімай контент.<br>
+                <span class="text-gradient">Ми зробимо решту.</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-text-dim mb-10 max-w-xl mx-auto leading-relaxed hero-fade hero-fade-4">
+                Українська продакшн-команда, яка допомагає дівчатам будувати стабільний дохід на платформі підписок
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center hero-fade hero-fade-5">
+                <a href="https://t.me/BossForge_bot?start=website"
+                   class="bg-gold text-bg font-bold px-10 py-4 rounded-xl text-lg hover:bg-gold-light transition-all pulse-gold">
+                    Почати співпрацю
+                </a>
+                <a href="#how"
+                   class="border border-border text-text-dim font-medium px-10 py-4 rounded-xl text-lg hover:border-gold hover:text-gold transition-all">
+                    Дізнатися більше
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hero-fade hero-fade-5">
+            <div class="w-6 h-10 border-2 border-border-light rounded-full flex justify-center pt-2">
+                <div class="w-1 h-3 bg-gold rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== СТАТИСТИКА ==================== -->
+    <section class="py-16 px-6 border-y border-border">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+                <div class="reveal">
+                    <div class="text-3xl sm:text-4xl font-black stat-number counter">2+</div>
+                    <div class="text-text-dim text-sm mt-1">роки досвіду</div>
+                </div>
+                <div class="reveal reveal-delay-1">
+                    <div class="text-3xl sm:text-4xl font-black stat-number counter">$71K+</div>
+                    <div class="text-text-dim text-sm mt-1">найкращий результат</div>
+                </div>
+                <div class="reveal reveal-delay-2">
+                    <div class="text-3xl sm:text-4xl font-black stat-number counter">0</div>
+                    <div class="text-text-dim text-sm mt-1">злитого контенту</div>
+                </div>
+                <div class="reveal reveal-delay-3">
+                    <div class="text-3xl sm:text-4xl font-black stat-number counter">24/7</div>
+                    <div class="text-text-dim text-sm mt-1">підтримка команди</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== БЕЗПЕКА ==================== -->
+    <section id="safety" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="text-gold font-semibold text-sm tracking-widest uppercase mb-3">Захист</p>
+                <h2 class="text-3xl sm:text-5xl font-black mb-4">
+                    Твоя безпека — понад усе
+                </h2>
+                <p class="text-text-dim text-lg max-w-lg mx-auto">
+                    Ми розуміємо твої страхи. Тому побудували 4 рівні захисту
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+                <div class="bg-surface rounded-2xl p-8 border border-border card-hover reveal">
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Геоблок України</h3>
+                    <p class="text-text-dim leading-relaxed">Твій профіль повністю прихований на території України. Знайомі, родичі, колеги — ніхто не побачить.</p>
+                </div>
+
+                <div class="bg-surface rounded-2xl p-8 border border-border card-hover reveal reveal-delay-1">
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/><path d="M15 11l-3 3m0 0l-3-3m3 3V4" stroke-dasharray="2 2"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Псевдонім</h3>
+                    <p class="text-text-dim leading-relaxed">Працюєш під вигаданим ім'ям. Твоя реальна особистість залишається повністю захищеною.</p>
+                </div>
+
+                <div class="bg-surface rounded-2xl p-8 border border-border card-hover reveal reveal-delay-2">
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">DMCA-захист 24/7</h3>
+                    <p class="text-text-dim leading-relaxed">Автоматичний моніторинг інтернету. Якщо контент з'являється де не треба — видаляємо протягом 24 годин.</p>
+                </div>
+
+                <div class="bg-surface rounded-2xl p-8 border border-border card-hover reveal reveal-delay-3">
+                    <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Адвокат в команді</h3>
+                    <p class="text-text-dim leading-relaxed">Юрист на постійній основі. Контракти, NDA, захист прав — професійна правова підтримка.</p>
+                </div>
+            </div>
+
+            <!-- Trust badge -->
+            <div class="reveal">
+                <div class="bg-green/5 border border-green/20 rounded-2xl p-6 text-center glow-gold float-badge">
+                    <p class="text-green text-lg font-bold">
+                        2 роки роботи — 0 випадків злитого контенту
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider max-w-4xl mx-auto"></div>
+
+    <!-- ==================== ЯК ЦЕ ПРАЦЮЄ ==================== -->
+    <section id="how" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="text-gold font-semibold text-sm tracking-widest uppercase mb-3">Процес</p>
+                <h2 class="text-3xl sm:text-5xl font-black mb-4">
+                    Три простих кроки
+                </h2>
+                <p class="text-text-dim text-lg">
+                    Ти займаєшся контентом. Ми — всім іншим.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Step 1 -->
+                <div class="relative reveal">
+                    <div class="bg-surface rounded-2xl p-8 border border-border h-full card-hover">
+                        <div class="text-5xl font-black text-gold/20 mb-4">01</div>
+                        <h3 class="text-xl font-bold mb-3">Знімаєш контент</h3>
+                        <p class="text-text-dim leading-relaxed mb-4">2-3 зйомки на тиждень. Ми даємо контент-план, ідеї та рекомендації. Ти вирішуєш межі.</p>
+                        <div class="flex items-center gap-2 text-gold text-sm font-medium">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            2-3 години за сесію
+                        </div>
+                    </div>
+                    <!-- Connector arrow (hidden on mobile) -->
+                    <div class="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-gold/30 text-2xl z-10">&rarr;</div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative reveal reveal-delay-1">
+                    <div class="bg-surface rounded-2xl p-8 border border-border h-full card-hover">
+                        <div class="text-5xl font-black text-gold/20 mb-4">02</div>
+                        <h3 class="text-xl font-bold mb-3">Ми просуваємо</h3>
+                        <p class="text-text-dim leading-relaxed mb-4">Маркетинг, спілкування з фанатами, стратегія продажів, аналітика — повний цикл на нас.</p>
+                        <div class="flex items-center gap-2 text-gold text-sm font-medium">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                            80% роботи — наша
+                        </div>
+                    </div>
+                    <div class="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-gold/30 text-2xl z-10">&rarr;</div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="reveal reveal-delay-2">
+                    <div class="bg-surface rounded-2xl p-8 border border-gold/30 h-full card-hover glow-gold">
+                        <div class="text-5xl font-black text-gold/20 mb-4">03</div>
+                        <h3 class="text-xl font-bold mb-3">Отримуєш гроші</h3>
+                        <p class="text-text-dim leading-relaxed mb-4">Стабільні виплати щомісяця. Прозора статистика. Бачиш кожну копійку.</p>
+                        <div class="flex items-center gap-2 text-gold text-sm font-medium">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            від $1,000/міс
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider max-w-4xl mx-auto"></div>
+
+    <!-- ==================== ПОРІВНЯННЯ ==================== -->
+    <section class="py-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="text-gold font-semibold text-sm tracking-widest uppercase mb-3">Чому команда</p>
+                <h2 class="text-3xl sm:text-5xl font-black mb-4">
+                    Сама vs з BossForge
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 reveal">
+                <!-- Сама -->
+                <div class="comparison-them rounded-2xl p-8 border border-border">
+                    <div class="text-text-dim font-bold text-lg mb-6 flex items-center gap-2">
+                        <span class="w-3 h-3 bg-text-muted rounded-full"></span>
+                        Працювати самій
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-text-dim">
+                            <span class="text-red-400 mt-0.5 flex-shrink-0">&#10005;</span>
+                            <span>Сама розбираєшся з просуванням</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-text-dim">
+                            <span class="text-red-400 mt-0.5 flex-shrink-0">&#10005;</span>
+                            <span>Відповідаєш на сотні повідомлень щодня</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-text-dim">
+                            <span class="text-red-400 mt-0.5 flex-shrink-0">&#10005;</span>
+                            <span>Ніякого юридичного захисту</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-text-dim">
+                            <span class="text-red-400 mt-0.5 flex-shrink-0">&#10005;</span>
+                            <span>Вигорання через 2-3 місяці</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-text-dim">
+                            <span class="text-red-400 mt-0.5 flex-shrink-0">&#10005;</span>
+                            <span>Дохід: $200–800/міс (типово)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- З командою -->
+                <div class="comparison-you rounded-2xl p-8 border border-gold/30 glow-gold">
+                    <div class="text-gold font-bold text-lg mb-6 flex items-center gap-2">
+                        <span class="w-3 h-3 bg-gold rounded-full"></span>
+                        З командою BossForge
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-green mt-0.5 flex-shrink-0">&#10003;</span>
+                            <span>Маркетологи працюють на тебе</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green mt-0.5 flex-shrink-0">&#10003;</span>
+                            <span>Четтери відповідають замість тебе</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green mt-0.5 flex-shrink-0">&#10003;</span>
+                            <span>Адвокат + DMCA + геоблок</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green mt-0.5 flex-shrink-0">&#10003;</span>
+                            <span>Ти фокусуєшся тільки на контенті</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold font-bold mt-0.5 flex-shrink-0">&#10003;</span>
+                            <span class="text-gold font-bold">Дохід: $1,000–10,000+/міс</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider max-w-4xl mx-auto"></div>
+
+    <!-- ==================== КЕЙСИ ==================== -->
+    <section class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="text-gold font-semibold text-sm tracking-widest uppercase mb-3">Результати</p>
+                <h2 class="text-3xl sm:text-5xl font-black mb-4">
+                    Реальні цифри
+                </h2>
+                <p class="text-text-dim text-lg">
+                    Скріншоти з панелі OnlyFans. Результати залежать від активності.
+                </p>
+            </div>
+
+            <!-- Кейс 1: Настя -->
+            <div class="bg-surface rounded-2xl border border-border card-hover reveal mb-8 overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-8 md:p-10 flex flex-col justify-center">
+                        <div class="flex items-center gap-3 mb-4">
+                            <h3 class="text-2xl font-black">Настя</h3>
+                            <div class="bg-gold/10 text-gold text-sm font-bold px-3 py-1 rounded-lg">+850% за 6 міс</div>
+                        </div>
+                        <p class="text-text-dim mb-6">Починала з $1,097 у січні. Через 6 місяців — $10,436. Стабільний ріст кожен місяць.</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-3">
+                                <span class="text-text-muted text-sm w-8">Січ</span>
+                                <div class="flex-1 bg-surface-3 rounded-full h-2.5"><div class="progress-animate bg-gold-dim h-full rounded-full" data-width="10%"></div></div>
+                                <span class="text-text-dim text-sm w-16 text-right">$1,097</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-text-muted text-sm w-8">Бер</span>
+                                <div class="flex-1 bg-surface-3 rounded-full h-2.5"><div class="progress-animate bg-gold-dim h-full rounded-full" data-width="40%"></div></div>
+                                <span class="text-text-dim text-sm w-16 text-right">$4,173</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-gold text-sm w-8 font-bold">Чер</span>
+                                <div class="flex-1 bg-surface-3 rounded-full h-2.5"><div class="progress-animate bg-gold h-full rounded-full" data-width="100%"></div></div>
+                                <span class="text-gold text-sm w-16 text-right font-bold">$10,436</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface-2 p-4 flex items-center justify-center">
+                        <img src="assets/case-nastya.png" alt="Скріншот заробітку Насті" class="rounded-xl w-full max-w-sm border border-border shadow-2xl">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кейс 2: Наташа -->
+            <div class="bg-surface rounded-2xl border border-border card-hover reveal mb-8 overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-8 md:p-10 flex flex-col justify-center order-2 md:order-1">
+                        <div class="bg-surface-2 p-4 flex items-center justify-center">
+                            <img src="assets/case-natasha.png" alt="Скріншот заробітку Наташі" class="rounded-xl w-full max-w-sm border border-border shadow-2xl">
+                        </div>
+                    </div>
+                    <div class="p-8 md:p-10 flex flex-col justify-center order-1 md:order-2">
+                        <div class="flex items-center gap-3 mb-4">
+                            <h3 class="text-2xl font-black">Наташа</h3>
+                            <div class="bg-gold/10 text-gold text-sm font-bold px-3 py-1 rounded-lg">$71K+ всього</div>
+                        </div>
+                        <p class="text-text-dim mb-6">Стабільно від $7K до $18K на місяць. Пік — $18,425 у червні. Загальний заробіток перевищив $71,000.</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-3">
+                                <span class="text-text-muted text-sm w-8">Бер</span>
+                                <div class="flex-1 bg-surface-3 rounded-full h-2.5"><div class="progress-animate bg-gold-dim h-full rounded-full" data-width="40%"></div></div>
+                                <span class="text-text-dim text-sm w-16 text-right">$7,441</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-text-muted text-sm w-8">Тра</span>
+                                <div class="flex-1 bg-surface-3 rounded-full h-2.5"><div class="progress-animate bg-gold h-full rounded-full" data-width="89%"></div></div>
+                                <span class="text-text-dim text-sm w-16 text-right">$16,439</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-gold text-sm w-8 font-bold">Чер</span>
+                                <div class="flex-1 bg-surface-3 rounded-full h-2.5"><div class="progress-animate bg-gold h-full rounded-full" data-width="100%"></div></div>
+                                <span class="text-gold text-sm w-16 text-right font-bold">$18,425</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кейс 3: Мія -->
+            <div class="bg-surface rounded-2xl border border-border card-hover reveal overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-8 md:p-10 flex flex-col justify-center">
+                        <div class="flex items-center gap-3 mb-4">
+                            <h3 class="text-2xl font-black">Мія</h3>
+                            <div class="bg-red-400/10 text-red-400 text-sm font-bold px-3 py-1 rounded-lg">сама vs команда</div>
+                        </div>
+                        <p class="text-text-dim mb-6">З командою — стабільний ріст до $11K/міс. Вирішила працювати сама. Результат — падіння. Повернулась до команди.</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-3">
+                                <span class="text-text-muted text-sm w-12">Січ</span>
+                                <div class="flex-1 bg-surface-3 rounded-full h-2.5"><div class="progress-animate bg-gold-dim h-full rounded-full" data-width="14%"></div></div>
+                                <span class="text-text-dim text-sm w-16 text-right">$1,604</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-gold text-sm w-12 font-bold">Чер</span>
+                                <div class="flex-1 bg-surface-3 rounded-full h-2.5"><div class="progress-animate bg-gold h-full rounded-full" data-width="100%"></div></div>
+                                <span class="text-gold text-sm w-16 text-right font-bold">$11,233</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-red-400/5 border border-red-400/20 rounded-lg p-3">
+                            <p class="text-red-400 text-sm text-center font-medium">Без команди навіть топ-акаунт падає — це факт</p>
+                        </div>
+                    </div>
+                    <div class="bg-surface-2 p-4 flex items-center justify-center">
+                        <img src="assets/case-mia.png" alt="Скріншот заробітку Мії" class="rounded-xl w-full max-w-sm border border-border shadow-2xl">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="gold-divider max-w-4xl mx-auto"></div>
+
+    <!-- ==================== КОМАНДА ==================== -->
+    <section class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="text-gold font-semibold text-sm tracking-widest uppercase mb-3">Команда</p>
+                <h2 class="text-3xl sm:text-5xl font-black mb-4">
+                    Хто стоїть за BossForge
+                </h2>
+                <p class="text-text-dim text-lg">Повна українська команда 🇺🇦</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
+                <div class="bg-surface rounded-2xl p-6 border border-border card-hover text-center reveal">
+                    <div class="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                    </div>
+                    <h3 class="font-bold mb-1">Продюсер</h3>
+                    <p class="text-text-dim text-sm">Forbes топ-5. Медіа-компанія 50+ людей до війни.</p>
+                </div>
+
+                <div class="bg-surface rounded-2xl p-6 border border-border card-hover text-center reveal reveal-delay-1">
+                    <div class="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971z"/></svg>
+                    </div>
+                    <h3 class="font-bold mb-1">Адвокат</h3>
+                    <p class="text-text-dim text-sm">NDA, контракти, DMCA, юридичний захист 24/7.</p>
+                </div>
+
+                <div class="bg-surface rounded-2xl p-6 border border-border card-hover text-center reveal reveal-delay-2">
+                    <div class="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+                    </div>
+                    <h3 class="font-bold mb-1">Маркетологи</h3>
+                    <p class="text-text-dim text-sm">Просування, стратегія, аналітика, робота з аудиторією.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto mb-8">
+                <div class="bg-surface rounded-2xl p-6 border border-border card-hover text-center reveal reveal-delay-2">
+                    <div class="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>
+                    </div>
+                    <h3 class="font-bold mb-1">Четтери</h3>
+                    <p class="text-text-dim text-sm">Спілкування з фанатами. NDA + паспортні дані.</p>
+                </div>
+
+                <div class="bg-surface rounded-2xl p-6 border border-gold/30 card-hover text-center reveal reveal-delay-3 glow-gold">
+                    <div class="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/></svg>
+                    </div>
+                    <h3 class="font-bold mb-1">AI-інженери</h3>
+                    <p class="text-text-dim text-sm">Генеруємо контент для соцмереж, аналізуємо ринок, автоматизуємо рутину.</p>
+                </div>
+            </div>
+
+            <!-- AI advantage callout -->
+            <div class="reveal">
+                <div class="bg-surface-2 border border-gold/20 rounded-2xl p-6 max-w-3xl mx-auto">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-gold/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gold mb-1">AI працює на тебе — ти просто знімаєш</h4>
+                            <p class="text-text-dim text-sm leading-relaxed">Ми генеруємо частину контенту для соцмереж за допомогою ІІ — тобі не потрібно вигадувати пости щодня. Постійно аналізуємо ринок: що працює, які тренди, коли краще публікувати. Результат — менше рутини для тебе, більше заробітку з меншими зусиллями.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider max-w-4xl mx-auto"></div>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="py-24 px-6">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="text-gold font-semibold text-sm tracking-widest uppercase mb-3">FAQ</p>
+                <h2 class="text-3xl sm:text-5xl font-black">
+                    Часті питання
+                </h2>
+            </div>
+
+            <div class="space-y-3">
+                <details class="bg-surface rounded-2xl border border-border group reveal">
+                    <summary class="p-6 text-lg font-semibold flex items-center justify-between">
+                        Звідки такі цифри заробітку?
+                        <span class="faq-icon text-gold text-2xl ml-4 flex-shrink-0">+</span>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 text-text-dim leading-relaxed">
+                        OnlyFans — платформа підписок. Фанати платять $10–50/міс за підписку, $5–200 за приватний контент. Одна модель може мати 100–500+ фанатів. Математика проста: 200 фанатів &times; $25 = $5,000/міс. Це легальний бізнес з прозорою аналітикою.
+                    </div>
+                </details>
+
+                <details class="bg-surface rounded-2xl border border-border group reveal reveal-delay-1">
+                    <summary class="p-6 text-lg font-semibold flex items-center justify-between">
+                        А якщо хтось дізнається?
+                        <span class="faq-icon text-gold text-2xl ml-4 flex-shrink-0">+</span>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 text-text-dim leading-relaxed">
+                        4 рівні захисту: геоблок (Україна прихована), псевдонім, DMCA-моніторинг 24/7, адвокат. Четтери працюють на контракті з NDA. За 2 роки — жодного інциденту.
+                    </div>
+                </details>
+
+                <details class="bg-surface rounded-2xl border border-border group reveal reveal-delay-1">
+                    <summary class="p-6 text-lg font-semibold flex items-center justify-between">
+                        Скільки часу це займає?
+                        <span class="faq-icon text-gold text-2xl ml-4 flex-shrink-0">+</span>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 text-text-dim leading-relaxed">
+                        2-3 зйомки на тиждень по 2-3 години. Решту — просування, чати, продажі — робить команда. Графік повністю гнучкий, адаптуємо під тебе.
+                    </div>
+                </details>
+
+                <details class="bg-surface rounded-2xl border border-border group reveal reveal-delay-2">
+                    <summary class="p-6 text-lg font-semibold flex items-center justify-between">
+                        А як з блекаутами?
+                        <span class="faq-icon text-gold text-2xl ml-4 flex-shrink-0">+</span>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 text-text-dim leading-relaxed">
+                        Знаємо про ситуацію. Контент-план даємо заздалегідь — знімаєш коли є світло. Навіть 1-2 зйомки на тиждень достатньо.
+                    </div>
+                </details>
+
+                <details class="bg-surface rounded-2xl border border-border group reveal reveal-delay-2">
+                    <summary class="p-6 text-lg font-semibold flex items-center justify-between">
+                        Можна піти в будь-який момент?
+                        <span class="faq-icon text-gold text-2xl ml-4 flex-shrink-0">+</span>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 text-text-dim leading-relaxed">
+                        Перші 2 тижні — пробний період без зобов'язань. Далі — попереджаєш за тиждень. Контент видаляємо на вимогу. Ніяких довгих контрактів.
+                    </div>
+                </details>
+
+                <details class="bg-surface rounded-2xl border border-border group reveal reveal-delay-3">
+                    <summary class="p-6 text-lg font-semibold flex items-center justify-between">
+                        Як швидко можна почати?
+                        <span class="faq-icon text-gold text-2xl ml-4 flex-shrink-0">+</span>
+                    </summary>
+                    <div class="faq-body px-6 pb-6 text-text-dim leading-relaxed">
+                        Співбесіда 15 хв &rarr; робота продюсера над образом 5-7 днів &rarr; перша зйомка через тиждень &rarr; перші результати через місяць.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-divider max-w-4xl mx-auto"></div>
+
+    <!-- ==================== ОФФЕР ==================== -->
+    <section class="py-24 px-6">
+        <div class="max-w-3xl mx-auto text-center reveal">
+            <div class="bg-surface rounded-3xl p-10 sm:p-16 border border-gold/20 glow-gold-strong relative overflow-hidden">
+                <!-- Background decoration -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full filter blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 bg-gold/3 rounded-full filter blur-3xl"></div>
+
+                <div class="relative z-10">
+                    <p class="text-gold font-semibold text-sm tracking-widest uppercase mb-4">Обмежений набір</p>
+                    <h2 class="text-3xl sm:text-5xl font-black mb-6 leading-tight">
+                        Шукаємо одну<br><span class="text-gradient">серйозну модель</span>
+                    </h2>
+                    <p class="text-text-dim text-lg mb-8 max-w-md mx-auto">
+                        Продюсер працює з кожною особисто — від створення образу до перших продажів. Не конвеєр.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-lg mx-auto mb-10">
+                        <div class="flex items-center gap-3">
+                            <span class="text-gold text-lg">&#10003;</span>
+                            <span class="text-sm">Повна підтримка команди</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-gold text-lg">&#10003;</span>
+                            <span class="text-sm">Твій власний бренд</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-gold text-lg">&#10003;</span>
+                            <span class="text-sm">Максимальний захист</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-gold text-lg">&#10003;</span>
+                            <span class="text-sm">2 тижні без зобов'язань</span>
+                        </div>
+                    </div>
+
+                    <a href="https://t.me/BossForge_bot?start=website"
+                       class="inline-block bg-gold text-bg font-bold px-12 py-5 rounded-xl text-xl hover:bg-gold-light transition-all pulse-gold">
+                        Написати нам
+                    </a>
+                    <p class="text-text-muted text-sm mt-4">
+                        Безкоштовна консультація &middot; Без зобов'язань &middot; Відповідь за пару годин
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="py-10 px-6 border-t border-border">
+        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <img src="assets/logo.png" alt="BossForge" class="w-24 opacity-60">
+                <span class="text-text-muted text-sm">2026</span>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="privacy.html" class="text-text-dim text-sm hover:text-gold transition-colors">
+                    Політика конфіденційності
+                </a>
+                <a href="https://t.me/BossForge_bot?start=website" class="text-text-dim text-sm hover:text-gold transition-colors">
+                    Telegram
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== СКРИПТ АНІМАЦІЙ ==================== -->
+    <script>
+        // ===== 1. Scroll reveal =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.querySelectorAll('.progress-animate').forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        if (width) bar.style.width = width;
+                    });
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.getAttribute('data-width');
+                    if (width) entry.target.style.width = width;
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.progress-animate').forEach(bar => progressObserver.observe(bar));
+
+        // ===== 1b. Hero video chain (vid1 → vid2 → vid1 → ...) =====
+        const vid1 = document.getElementById('heroVid1');
+        const vid2 = document.getElementById('heroVid2');
+        const vid3 = document.getElementById('heroVid3');
+        if (vid1 && vid2 && vid3) {
+            vid1.addEventListener('ended', () => {
+                vid1.style.opacity = '0';
+                vid2.style.opacity = '0.20';
+                vid2.currentTime = 0;
+                vid2.play();
+            });
+            vid2.addEventListener('ended', () => {
+                vid2.style.opacity = '0';
+                vid3.style.opacity = '0.20';
+                vid3.currentTime = 0;
+                vid3.play();
+            });
+            vid3.addEventListener('ended', () => {
+                vid3.style.opacity = '0';
+                vid1.style.opacity = '0.20';
+                vid1.currentTime = 0;
+                vid1.play();
+            });
+        }
+
+        // ===== 2. Cursor glow follow =====
+        const glow = document.getElementById('cursorGlow');
+        if (glow && window.innerWidth > 640) {
+            let glowX = 0, glowY = 0, currentX = 0, currentY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                glowX = e.clientX;
+                glowY = e.clientY;
+            });
+
+            function animateGlow() {
+                currentX += (glowX - currentX) * 0.15;
+                currentY += (glowY - currentY) * 0.15;
+                glow.style.left = currentX + 'px';
+                glow.style.top = currentY + 'px';
+                requestAnimationFrame(animateGlow);
+            }
+            animateGlow();
+
+            document.addEventListener('mouseenter', () => glow.style.opacity = '1');
+            document.addEventListener('mouseleave', () => glow.style.opacity = '0');
+        }
+
+        // ===== 3. 3D tilt on cards =====
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -6;
+                const rotateY = ((x - centerX) / centerX) * 6;
+
+                card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+                card.style.transition = 'transform 0.5s ease, border-color 0.3s ease, box-shadow 0.3s ease';
+            });
+
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'border-color 0.3s ease, box-shadow 0.3s ease';
+            });
+        });
+
+        // ===== 4. Magnetic CTA buttons =====
+        document.querySelectorAll('.pulse-gold').forEach(btn => {
+            btn.classList.add('magnetic-btn');
+
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // ===== 5. Hero parallax on mouse move =====
+        const heroSection = document.querySelector('section:first-of-type');
+        const heroContent = heroSection?.querySelector('.relative.z-10');
+        const heroVideo = heroSection?.querySelector('video');
+
+        if (heroSection && window.innerWidth > 640) {
+            heroSection.addEventListener('mousemove', (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+                if (heroContent) {
+                    heroContent.style.transform = `translate(${x * -8}px, ${y * -8}px)`;
+                }
+                if (heroVideo) {
+                    heroVideo.style.transform = `scale(1.05) translate(${x * 12}px, ${y * 12}px)`;
+                }
+            });
+
+            heroSection.addEventListener('mouseleave', () => {
+                if (heroContent) heroContent.style.transform = 'translate(0, 0)';
+                if (heroVideo) heroVideo.style.transform = 'scale(1.05) translate(0, 0)';
+            });
+
+            // Smooth transitions
+            if (heroContent) heroContent.style.transition = 'transform 0.3s ease-out';
+            if (heroVideo) heroVideo.style.transition = 'transform 0.4s ease-out';
+        }
+
+        // ===== 6. Shine effect on gold border cards =====
+        document.querySelectorAll('[class*="border-gold"]').forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                el.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(200,169,126,0.06) 0%, transparent 50%), #111111`;
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.background = '';
+            });
+        });
+
+        // ===== 7. Stats counter animation =====
+        const statsSection = document.querySelector('.border-y');
+        if (statsSection) {
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.querySelectorAll('.counter').forEach(el => {
+                            const text = el.textContent;
+                            const num = parseInt(text.replace(/\D/g, ''));
+                            if (!num || num === 0) return;
+
+                            const suffix = text.replace(/[\d,]/g, '');
+                            const duration = 1500;
+                            const start = performance.now();
+
+                            function tick(now) {
+                                const progress = Math.min((now - start) / duration, 1);
+                                const eased = 1 - Math.pow(1 - progress, 3);
+                                const current = Math.round(num * eased);
+                                el.textContent = current + suffix;
+                                if (progress < 1) requestAnimationFrame(tick);
+                            }
+                            requestAnimationFrame(tick);
+                        });
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            statsObserver.observe(statsSection);
+        }
+    </script>
+
+</body>
+</html>
